@@ -1,6 +1,7 @@
 const pool = require('../db');
 
 const getAlumnos = async (req, res) => {
+	// console.log('Entrando a GET /alumnos');
 	try {
 		const result = await pool.query('SELECT * FROM alumnos');
 		res.json(result.rows);

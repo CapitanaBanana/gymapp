@@ -5,7 +5,10 @@ const {
 	inscribirAlumno,
 } = require('../controllers/alumnosController');
 
-router.get('/obtener', getAlumnos); // ACA NOSE SI VA '/' o '/alumnos' !!!!!!!!!!!!!
+// GET → /api/alumnos
+router.get('/', getAlumnos);
+
+// POST → /api/alumnos/inscripcion
 router.post('/inscripcion', inscribirAlumno);
 
 module.exports = router;

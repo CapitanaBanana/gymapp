@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' }); // ajustá según tu estructura
 const { Pool } = require('pg');
 
 const pool = new Pool({
