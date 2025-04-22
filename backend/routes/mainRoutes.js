@@ -15,4 +15,8 @@ router.get('/inscripcion', (req, res) => {
 	);
 });
 
+router.get('/alumnos', (req, res) => {
+	res.sendFile(path.join(__dirname, '..', '..', 'src/html', 'alumnos.html'));
+});
+
 module.exports = router;

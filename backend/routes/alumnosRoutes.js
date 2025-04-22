@@ -5,7 +5,7 @@ const {
 	inscribirAlumno,
 } = require('../controllers/alumnosController');
 
-router.get('/', getAlumnos); // ACA NOSE SI VA '/' o '/alumnos' !!!!!!!!!!!!!
+router.get('/obtener', getAlumnos); // ACA NOSE SI VA '/' o '/alumnos' !!!!!!!!!!!!!
 router.post('/inscripcion', inscribirAlumno);
 
 module.exports = router;
