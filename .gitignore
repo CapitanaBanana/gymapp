@@ -1,0 +1,41 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entorno
+.env
+
+# Logs
+logs/
+*.log
+
+# Sistema operativo
+.DS_Store       # macOS
+Thumbs.db       # Windows
+
+# Editor de código
+.vscode/
+.idea/
+
+# Archivos temporales
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Compilados de Tailwind (si estás usando build personalizado)
+src/css/output.css
+
+# Coverage de tests
+coverage/
+
+# Archivos de producción opcionales
+dist/
+build/
+
+# Archivos de base de datos (si generás dumps locales)
+*.sql
+*.sqlite
+*.db
