@@ -24,7 +24,7 @@ const pool = new Pool({
 });
 
 // Obtener todos los alumnos
-app.get('/alumnos', async (req, res) => {
+app.get('/api/alumnos', async (req, res) => {
 	try {
 		const result = await pool.query('SELECT * FROM alumnos');
 		res.json(result.rows);
@@ -78,4 +78,8 @@ app.get('/inscripcion', (req, res) => {
 // Iniciar servidor
 app.listen(port, () => {
 	console.log(`Servidor corriendo en http://localhost:${port}`);
+});
+
+app.get('/alumnos', (req, res) => {
+	res.sendFile(path.join(__dirname, 'src/html', 'alumnos.html'));
 });
