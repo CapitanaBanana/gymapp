@@ -2,21 +2,19 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
-// Ruta para index.html
+// Ruta para index
 router.get('/', (req, res) => {
-	//sale de la carpeta routes, sale de backend y entra a src/html y buscan index.html
-	res.sendFile(path.join(__dirname, '..', '..', 'src/html', 'index.html'));
+	res.render('pages/index', { title: 'Inicio - GymApp' });
 });
 
-// Ruta para inscripcion.html
+// Ruta para inscripción
 router.get('/inscripcion', (req, res) => {
-	res.sendFile(
-		path.join(__dirname, '..', '..', 'src/html', 'inscripcion.html')
-	);
+	res.render('pages/inscripcion', { title: 'Inscripción - GymApp' });
 });
 
+// Ruta para alumnos
 router.get('/alumnos', (req, res) => {
-	res.sendFile(path.join(__dirname, '..', '..', 'src/html', 'alumnos.html'));
+	res.render('pages/alumnos', { title: 'Listado de Alumnos - GymApp' });
 });
 
 module.exports = router;

@@ -13,11 +13,11 @@ const getAlumnos = async (req, res) => {
 
 const inscribirAlumno = async (req, res) => {
 	const { nombre, apellido, dni, email, telefono } = req.body;
-
+	const emailFinal = email === '' ? null : email;
 	try {
 		await pool.query(
 			'INSERT INTO alumnos (nombre, apellido, dni, email, telefono) VALUES ($1, $2, $3, $4, $5)',
-			[nombre, apellido, dni, email, telefono]
+			[nombre, apellido, dni, emailFinal, telefono]
 		);
 		res.status(200).json({ mensaje: 'Inscripción guardada' });
 	} catch (error) {
