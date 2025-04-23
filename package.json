@@ -15,10 +15,13 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.4",
+    "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
+    "ejs-locals": "^1.0.2",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "pg": "^8.14.1",
     "sqlite3": "^5.1.7"
   },

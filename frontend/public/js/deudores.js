@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
 	try {
-		const res = await fetch('/api/alumnos');
+		const res = await fetch('/api/alumnos/deudores');
 
 		const alumnos = await res.json();
 
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 			fila.innerHTML = `
         <td class="p-2">${alumno.nombre}</td>
         <td class="p-2">${alumno.apellido}</td>
-        <td class="p-2">${alumno.email}</td>
         <td class="p-2">${alumno.telefono}</td>
       `;
 
