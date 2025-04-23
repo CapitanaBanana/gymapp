@@ -1,3 +1,4 @@
+import { mostrarToast } from './toast.js';
 document.addEventListener('DOMContentLoaded', () => {
 	const formulario = document.getElementById('formulario-inscripcion');
 
@@ -13,18 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		// Validaciones básicas
-		if (
-			!datos.nombre ||
-			!datos.apellido ||
-			!datos.dni ||
-			!datos.email ||
-			!datos.telefono
-		) {
-			alert('Por favor, completá todos los campos.');
+		if (!datos.nombre || !datos.apellido || !datos.dni || !datos.telefono) {
+			alert('Por favor, completá todos los campos obligatorios.');
 			return;
 		}
 
-		const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datos.email);
+		const emailValido =
+			datos.email === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datos.email);
 		if (!emailValido) {
 			alert('Por favor, ingresá un email válido.');
 			return;
@@ -32,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// Enviar datos al backend
 		try {
-			const res = await fetch('/api/inscripcion', {
+			const res = await fetch('/api/alumnos/inscripcion', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(datos),
@@ -44,11 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
 					'Inscripción exitosa. Te hemos enviado un email de confirmación.'
 				);
 				formulario.reset();
+
+				localStorage.setItem(
+					'mensaje',
+					'Inscripción exitosa. El alumno ha sido registrado.'
+				);
+
+				window.location.href = '/alumnos';
 			} else {
-				console.log('ERORR');
+				console.log('Error al registrar');
+				mostrarToast('Hubo un error al registrar al alumno.', 'error');
 			}
 		} catch (err) {
 			console.error(err);
+			mostrarToast('Error en la conexión al servidor.', 'error');
 		}
 	});
 });

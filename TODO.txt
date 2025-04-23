@@ -1,0 +1,14 @@
+LISTADOS
+listado de últimas 10 asistencias
+listado adeudadores de cuota(poner en adeuda se debe pagar, a los otros se les hace comparacion comun)
+todos los listados necesitan filtros
+
+BUSCADOR
+buscador para pasar presente
+
+OBLIGATORIO
+cuando se registra una opersona se le agrega la cuota
+
+AGREGADOS
+registrar ventas de bebidas(agua,gasesosa,etc) + cuota 1 solo dia
+
