@@ -19,17 +19,18 @@ const inscribirAlumno = async (req, res) => {
 			'INSERT INTO alumnos (nombre, apellido, dni, email, telefono) VALUES ($1, $2, $3, $4, $5)',
 			[nombre, apellido, dni, emailFinal, telefono]
 		);
-		req.flash('success', 'Inscripción exitosa. El alumno ha sido registrado.');
-		res.status(200).json({ mensaje: 'Inscripción guardada' }); // Respuesta exitosa
+		res
+			.status(200)
+			.json({ mensaje: 'Inscripción exitosa. El alumno ha sido registrado.' });
 	} catch (error) {
 		console.error(error);
-		req.flash('error', 'Error al guardar en la base de datos.');
-		res.status(500).json({ mensaje: 'Error al guardar en la base de datos' }); // Respuesta de error
+		res.status(500).json({ mensaje: 'Error al guardar en la base de datos' });
 	}
 };
+
 const getAlumnosDeudores = async (req, res) => {
 	try {
-		console.log('Verificando deudores...');
+		console.log();
 		// Actualizar alumnos con más de 30 días de diferencia entre fecha_pago y la fecha actual
 		await pool.query(`
             UPDATE cuotas
