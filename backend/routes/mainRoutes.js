@@ -17,4 +17,10 @@ router.get('/alumnos', (req, res) => {
 	res.render('pages/alumnos', { title: 'Listado de Alumnos - GymApp' });
 });
 
+router.get('/deudores', (req, res) => {
+	res.render('pages/listadoDeudores', {
+		title: 'Listado de Deudores - GymApp',
+	});
+});
+
 module.exports = router;

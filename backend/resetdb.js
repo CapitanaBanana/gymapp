@@ -4,7 +4,9 @@ const resetDatabase = async () => {
 	try {
 		await pool.query(`
 			DROP TABLE IF EXISTS asistencias;
+			DROP TABLE IF EXISTS cuotas;
 			DROP TABLE IF EXISTS alumnos;
+	
 
 			CREATE TABLE alumnos (
 				id SERIAL PRIMARY KEY,
@@ -41,13 +43,13 @@ const resetDatabase = async () => {
 				(3, '2025-04-19', '08:45'),
 				(3, '2025-04-22', '09:00');
         CREATE TABLE cuotas (
-	id SERIAL PRIMARY KEY,
-	alumno_id INTEGER REFERENCES alumnos(id) ON DELETE CASCADE,
-	monto DECIMAL(10, 2) NOT NULL,
-	adeuda BOOLEAN DEFAULT FALSE,
-	fecha_pago DATE,
-	tipo_cuota VARCHAR(10) NOT NULL
-);
+					id SERIAL PRIMARY KEY,
+					alumno_id INTEGER REFERENCES alumnos(id) ON DELETE CASCADE,
+					monto DECIMAL(10, 2) NOT NULL,
+					adeuda BOOLEAN DEFAULT FALSE,
+					fecha_pago DATE,
+					tipo_cuota VARCHAR(10) NOT NULL
+				);
 
         INSERT INTO cuotas (alumno_id, monto, adeuda, fecha_pago, tipo_cuota) VALUES
 	(1, 5000.00, FALSE, '2025-04-05', 'dos'),
