@@ -2,7 +2,31 @@ const pool = require('../db');
 
 const getAlumnos = async (req, res) => {
 	try {
-		const result = await pool.query('SELECT * FROM alumnos');
+		const result = await pool.query(`
+			SELECT 
+				a.id,
+				a.nombre,
+				a.apellido,
+				a.dni,
+				a.email,
+				a.telefono,
+				-- Última asistencia
+				(SELECT fecha 
+				 FROM asistencias 
+				 WHERE alumno_id = a.id 
+				 ORDER BY fecha DESC, hora DESC 
+				 LIMIT 1) AS ultima_asistencia,
+				-- Último pago
+				(SELECT fecha_pago 
+				 FROM cuotas 
+				 WHERE alumno_id = a.id AND fecha_pago IS NOT NULL
+				 ORDER BY fecha_pago DESC 
+				 LIMIT 1) AS ultima_fecha_pago
+			FROM alumnos a
+			ORDER BY a.id
+		`);
+
+		// Enviar respuesta con los resultados
 		res.json(result.rows);
 	} catch (err) {
 		console.error(err);

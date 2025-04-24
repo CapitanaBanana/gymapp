@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					'mensaje',
 					'Inscripción exitosa. El alumno ha sido registrado.'
 				);
+				localStorage.setItem('dni', datos.dni);
 
 				window.location.href = '/alumnos';
 			} else {
