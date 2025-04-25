@@ -73,17 +73,19 @@ const getAlumnosDeudores = async (req, res) => {
 		console.log();
 		// Actualizar alumnos con más de 30 días de diferencia entre fecha_pago y la fecha actual
 		await pool.query(`
-            UPDATE cuotas
-            SET adeuda = true
-            WHERE adeuda = false AND fecha_pago < CURRENT_DATE - INTERVAL '30 days'
-        `);
-
+        UPDATE alumnos
+        SET adeuda = true
+        WHERE adeuda = false AND id IN (
+            SELECT alumno_id
+            FROM cuotas
+            WHERE fecha_pago < CURRENT_DATE - INTERVAL '30 days'
+        )
+    `);
 		// Obtener alumnos que tienen adeuda = true
 		const result = await pool.query(`
-            SELECT a.id, a.nombre, a.apellido, a.dni, c.monto, c.fecha_pago, c.adeuda
-            FROM alumnos a
-            JOIN cuotas c ON a.id = c.alumno_id
-            WHERE c.adeuda = true
+            SELECT nombre, apellido, telefono
+            FROM alumnos 
+            WHERE adeuda = true
         `);
 		res.json(result.rows);
 	} catch (err) {

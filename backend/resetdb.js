@@ -7,7 +7,6 @@ const resetDatabase = async () => {
 			DROP TABLE IF EXISTS cuotas;
 			DROP TABLE IF EXISTS alumnos;
 	
-
 			CREATE TABLE alumnos (
 				id SERIAL PRIMARY KEY,
 				nombre VARCHAR(100) NOT NULL,
@@ -16,6 +15,7 @@ const resetDatabase = async () => {
 				email VARCHAR(150),
 				telefono VARCHAR(20),
 				fecha_alta DATE DEFAULT CURRENT_DATE,
+        adeuda BOOLEAN DEFAULT FALSE,
 				activo BOOLEAN DEFAULT TRUE
 			);
 
@@ -26,12 +26,21 @@ const resetDatabase = async () => {
 				hora TIME NOT NULL DEFAULT CURRENT_TIME
 			);
 
+        CREATE TABLE cuotas (
+					id SERIAL PRIMARY KEY,
+					alumno_id INTEGER REFERENCES alumnos(id) ON DELETE CASCADE,
+					monto DECIMAL(10, 2) NOT NULL,
+					fecha_pago DATE,
+					tipo_cuota VARCHAR(10) NOT NULL
+				);
+
+        
 			-- Datos de prueba
-			INSERT INTO alumnos (nombre, apellido, dni, email, telefono)
+			INSERT INTO alumnos (nombre, apellido, dni, email, telefono, adeuda)
 			VALUES 
-				('Juan', 'Pérez', '12345678', NULL, '11111111'),
-				('María', 'Gómez', '87654321', 'maria@example.com', '22222222'),
-				('Luis', 'Martínez', '11223344', 'luis@example.com', '33333333');
+				('Juan', 'Pérez', '12345678', NULL, '11111111', FALSE),
+				('María', 'Gómez', '87654321', 'maria@example.com', '22222222', FALSE),
+				('Luis', 'Martínez', '11223344', 'luis@example.com', '33333333', FALSE);
 
         -- Insertar asistencias de prueba
 			INSERT INTO asistencias (alumno_id, fecha, hora)
@@ -42,20 +51,12 @@ const resetDatabase = async () => {
 				(2, '2025-04-22', '10:15'),
 				(3, '2025-04-19', '08:45'),
 				(3, '2025-04-22', '09:00');
-        CREATE TABLE cuotas (
-					id SERIAL PRIMARY KEY,
-					alumno_id INTEGER REFERENCES alumnos(id) ON DELETE CASCADE,
-					monto DECIMAL(10, 2) NOT NULL,
-					adeuda BOOLEAN DEFAULT FALSE,
-					fecha_pago DATE,
-					tipo_cuota VARCHAR(10) NOT NULL
-				);
 
-        INSERT INTO cuotas (alumno_id, monto, adeuda, fecha_pago, tipo_cuota) VALUES
-	(1, 5000.00, FALSE, '2025-04-05', 'dos'),
-	(2, 7000.00, FALSE, '2025-04-10', 'tres'),
-	(3, 9000.00, FALSE, '2025-04-02', 'libre');
-
+        -- Insertar cuotas de prueba
+      INSERT INTO cuotas (alumno_id, monto, fecha_pago, tipo_cuota) VALUES
+        (1, 5000.00, '2025-04-05', 'dos'),
+        (2, 7000.00, '2025-04-10', 'tres'),
+        (3, 9000.00, '2025-04-02', 'libre');
 		`);
 
 		console.log('✅ Base de datos reseteada y datos de prueba insertados.');
