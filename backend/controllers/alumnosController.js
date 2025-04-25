@@ -34,6 +34,22 @@ const getAlumnos = async (req, res) => {
 	}
 };
 
+const registrarAsistencia = async (req, res) => {
+	const { alumnoId } = req.body;
+	if (!alumnoId) {
+		return res.status(400).json({ mensaje: 'ID de alumno no proporcionado' });
+	}
+	try {
+		await pool.query(
+			'INSERT INTO asistencias (alumno_id, fecha, hora) VALUES ($1, CURRENT_DATE, CURRENT_TIME)',
+			[alumnoId]
+		);
+		res.status(200).json({ mensaje: 'Asistencia registrada' });
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ mensaje: 'Error al registrar asistencia' });
+	}
+};
 const inscribirAlumno = async (req, res) => {
 	const { nombre, apellido, dni, email, telefono } = req.body;
 	const emailFinal = email === '' ? null : email; // Si no se ingresa un email, lo dejamos como null
@@ -80,4 +96,5 @@ module.exports = {
 	getAlumnos,
 	inscribirAlumno,
 	getAlumnosDeudores,
+	registrarAsistencia,
 };
