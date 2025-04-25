@@ -1,14 +1,7 @@
-import { mostrarToast } from './toast.js';
 document.addEventListener('DOMContentLoaded', async () => {
 	// Verificar si hay un mensaje en el localStorage
 	const mensaje = localStorage.getItem('mensaje');
 	const dni = localStorage.getItem('dni');
-
-	if (mensaje) {
-		mostrarToast(mensaje, 'success');
-		// Eliminar el mensaje después de mostrarlo (opcional)
-		localStorage.removeItem('mensaje');
-	}
 
 	try {
 		const res = await fetch('/api/alumnos');
