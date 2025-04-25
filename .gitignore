@@ -26,7 +26,7 @@ Thumbs.db       # Windows
 *.bak
 
 # Compilados de Tailwind (si estás usando build personalizado)
-src/css/output.css
+frontend/public/css/output.css
 
 # Coverage de tests
 coverage/
