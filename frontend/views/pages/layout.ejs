@@ -11,8 +11,18 @@
 			href="/css/output.css"
 			rel="stylesheet" />
 	</head>
-	<body class="bg-gray-100">
+	<body class="min-h-screen flex flex-col bg-gray-100">
 		<header class="bg-blue-600 text-white">
+			<div class="relative">
+				<input
+					type="text"
+					id="busqueda-alumno"
+					placeholder="Buscar alumno..."
+					class="text-black px-3 py-1 rounded-md" />
+				<ul
+					id="resultados-busqueda"
+					class="absolute bg-white text-black rounded-md w-full mt-1 shadow-md hidden z-50"></ul>
+			</div>
 			<nav class="container mx-auto p-4">
 				<ul class="flex justify-around">
 					<li>
@@ -40,25 +50,10 @@
 			</nav>
 		</header>
 
-		<main class="container mx-auto p-6">
+		<main class="container mx-auto p-6 flex-grow">
 			<%- body %>
 			<!-- Aquí se inserta el contenido específico de cada página -->
 		</main>
-		<script>
-			setTimeout(() => {
-				const success = document.getElementById('toast-success');
-				const error = document.getElementById('toast-error');
-
-				if (success) success.classList.add('opacity-0');
-				if (error) error.classList.add('opacity-0');
-
-				// Opcional: eliminarlos completamente después del fade
-				setTimeout(() => {
-					if (success) success.remove();
-					if (error) error.remove();
-				}, 500); // Espera a que termine la transición
-			}, 4000); // Tiempo visible del toast
-		</script>
 
 		<footer class="bg-blue-600 text-white text-center p-4">
 			<p>&copy; 2025 GymApp. Todos los derechos reservados.</p>
@@ -72,5 +67,8 @@
 		<script
 			type="module"
 			src="/js/toast.js"></script>
+		<script
+			type="module"
+			src="/js/buscador.js"></script>
 	</body>
 </html>
