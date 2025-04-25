@@ -53,10 +53,10 @@ const resetDatabase = async () => {
 				(3, '2025-04-22', '09:00');
 
         -- Insertar cuotas de prueba
-      INSERT INTO cuotas (alumno_id, monto, fecha_pago, tipo_cuota) VALUES
-        (1, 5000.00, '2025-04-05', 'dos'),
-        (2, 7000.00, '2025-04-10', 'tres'),
-        (3, 9000.00, '2025-04-02', 'libre');
+           INSERT INTO cuotas (alumno_id, monto, fecha_pago, tipo_cuota) VALUES
+    (1, 5000.00, '2025-03-05', 'dos'),
+    (2, 7000.00, '2025-04-10', 'tres'),
+    (3, 9000.00, '2025-03-23', 'libre');
 		`);
 
 		console.log('✅ Base de datos reseteada y datos de prueba insertados.');
