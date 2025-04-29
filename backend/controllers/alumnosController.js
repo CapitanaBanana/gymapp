@@ -70,7 +70,6 @@ const inscribirAlumno = async (req, res) => {
 
 const getAlumnosDeudores = async (req, res) => {
 	try {
-		console.log();
 		// Actualizar alumnos con más de 30 días de diferencia entre fecha_pago y la fecha actual
 		await pool.query(`
         UPDATE alumnos

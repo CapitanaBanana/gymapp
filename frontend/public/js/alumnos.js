@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 		alumnos.forEach((alumno) => {
 			const fila = document.createElement('tr');
 			if (alumno.dni === dni) {
-				fila.classList.add('bg-alert');
-				setTimeout(() => fila.classList.remove('bg-a'), 1500);
+				fila.classList.add('bg-warning');
+				setTimeout(() => fila.classList.remove('bg-warning'), 1500);
 				localStorage.removeItem('dni');
 			}
 
