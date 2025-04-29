@@ -1,10 +1,7 @@
-<% layout('layout') %>
-<!-- Esto indica que esta página usará el layout común -->
+<% layout('layout') %> <% layout('layout') %>
 
-<div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md mx-auto mt-12">
-	<h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
-		Formulario de Inscripción
-	</h2>
+<div class="card w-full max-w-md mx-auto mt-12">
+	<h2 class="page-title">Formulario de Inscripción</h2>
 	<form
 		id="formulario-inscripcion"
 		class="space-y-4">
@@ -14,7 +11,7 @@
 				id="nombre"
 				placeholder="Nombre"
 				required
-				class="w-full p-3 border border-gray-300 rounded-xl" />
+				class="input" />
 			<span class="absolute top-2 right-2 text-red-500">*</span>
 		</div>
 		<div class="relative">
@@ -23,7 +20,7 @@
 				id="apellido"
 				placeholder="Apellido"
 				required
-				class="w-full p-3 border border-gray-300 rounded-xl" />
+				class="input" />
 			<span class="absolute top-2 right-2 text-red-500">*</span>
 		</div>
 		<div class="relative">
@@ -32,7 +29,7 @@
 				id="dni"
 				placeholder="DNI"
 				required
-				class="w-full p-3 border border-gray-300 rounded-xl" />
+				class="input" />
 			<span class="absolute top-2 right-2 text-red-500">*</span>
 		</div>
 		<div class="relative">
@@ -40,7 +37,7 @@
 				type="email"
 				id="email"
 				placeholder="Email (opcional)"
-				class="w-full p-3 border border-gray-300 rounded-xl" />
+				class="input" />
 		</div>
 		<div class="relative">
 			<input
@@ -48,16 +45,17 @@
 				id="telefono"
 				placeholder="Teléfono"
 				required
-				class="w-full p-3 border border-gray-300 rounded-xl" />
+				class="input" />
 			<span class="absolute top-2 right-2 text-red-500">*</span>
 		</div>
 		<button
 			type="submit"
-			class="w-full bg-blue-500 text-white py-3 rounded-xl">
+			class="btn w-full">
 			Inscribirse
 		</button>
 	</form>
 </div>
+
 <script
 	type="module"
 	src="/js/inscripcion.js"></script>

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 export function mostrarToast(mensaje, tipo = 'success') {
 	const toast = document.createElement('div');
 	toast.className = `p-4 rounded-xl shadow-lg transition-opacity duration-500 ${
-		tipo === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+		tipo === 'success' ? 'bg-success text-white' : 'bg-danger text-white'
 	}`;
 	toast.innerText = mensaje;
 	toast.style.opacity = 1;

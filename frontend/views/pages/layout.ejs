@@ -12,13 +12,13 @@
 			rel="stylesheet" />
 	</head>
 	<body class="min-h-screen flex flex-col bg-gray-100">
-		<header class="bg-blue-600 text-white">
+		<header class="bg-primary text-white">
 			<div class="relative">
 				<input
 					type="text"
 					id="busqueda-alumno"
 					placeholder="Buscar alumno..."
-					class="text-black px-3 py-1 rounded-md" />
+					class="input text-black" />
 				<ul
 					id="resultados-busqueda"
 					class="absolute bg-white text-black rounded-md w-full mt-1 shadow-md hidden z-50"></ul>
@@ -28,28 +28,28 @@
 					<li>
 						<a
 							href="/"
-							class="hover:text-gray-300"
+							class="nav-link"
 							>Inicio</a
 						>
 					</li>
 					<li>
 						<a
 							href="/alumnos"
-							class="hover:text-gray-300"
+							class="nav-link"
 							>Alumnos</a
 						>
 					</li>
 					<li>
 						<a
 							href="/inscripcion"
-							class="hover:text-gray-300"
+							class="nav-link"
 							>Inscripción</a
 						>
 					</li>
 					<li>
 						<a
 							href="/deudores"
-							class="hover:text-gray-300"
+							class="nav-link"
 							>Deudores</a
 						>
 					</li>
@@ -62,7 +62,7 @@
 			<!-- Aquí se inserta el contenido específico de cada página -->
 		</main>
 
-		<footer class="bg-blue-600 text-white text-center p-4">
+		<footer class="bg-primary text-white text-center p-4">
 			<p>&copy; 2025 GymApp. Todos los derechos reservados.</p>
 		</footer>
 		<!-- Toast container -->
