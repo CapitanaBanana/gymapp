@@ -93,9 +93,28 @@ const getAlumnosDeudores = async (req, res) => {
 	}
 };
 
+const getAlumnoByDNI = async (req, res) => {
+	const dni = req.params.dni;
+	try {
+		const result = await pool.query('SELECT * FROM alumnos WHERE dni = $1', [
+			dni,
+		]);
+		const alumno = result.rows[0];
+
+		if (!alumno) {
+			return res.status(404).json({ mensaje: 'Alumno no encontrado' });
+		}
+		res.json(alumno);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ mensaje: 'Error al obtener el alumno por DNI' });
+	}
+};
+
 module.exports = {
 	getAlumnos,
 	inscribirAlumno,
 	getAlumnosDeudores,
 	registrarAsistencia,
+	getAlumnoByDNI,
 };

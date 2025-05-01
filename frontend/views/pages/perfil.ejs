@@ -1,0 +1,23 @@
+<% layout('layout') %>
+
+<div class="max-w-xl mx-auto card">
+	<h2
+		class="page-title"
+		id="titulo"></h2>
+	<ul class="text-lg space-y-2">
+		<li><strong>DNI:</strong> <span id="dni"></span></li>
+		<li><strong>Teléfono:</strong> <span id="telefono"></span></li>
+		<li><strong>Última asistencia:</strong> <span id="asistencia"></span></li>
+		<li><strong>Último pago:</strong> <span id="pago"></span></li>
+	</ul>
+
+	<a
+		href="/alumnos"
+		class="btn mt-6 inline-block"
+		>← Volver al listado</a
+	>
+</div>
+
+<script
+	defer
+	src="/js/perfil.js"></script>

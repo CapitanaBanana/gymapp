@@ -12,7 +12,7 @@ export function renderListaResultados(resultados, onClickItem) {
 	resultados.forEach((alumno) => {
 		const li = document.createElement('li');
 		li.className =
-			'p-2 bg-white text-black hover:bg-blue-100 cursor-pointer border-b border-gray-200';
+			'flex items-center gap-3 p-2 bg-white text-gray-800 hover:bg-gray-200 border-b border-gray-200 rounded-md shadow-sm transition-all duration-200 ease-in-out cursor-pointer';
 		li.textContent = `${alumno.nombre} ${alumno.apellido}`;
 		li.addEventListener('click', () => onClickItem(alumno));
 		listaResultados.appendChild(li);

@@ -16,6 +16,7 @@ module.exports = {
 				success: '#10B981',
 				neutral: '#F3F4F6',
 				primarydark: '#1E3A8A',
+				hovercolor: '##808488FF',
 			},
 			fontFamily: {
 				sans: ['"Open Sans"', 'sans-serif'],

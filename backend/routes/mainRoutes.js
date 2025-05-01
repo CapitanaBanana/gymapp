@@ -23,4 +23,9 @@ router.get('/deudores', (req, res) => {
 	});
 });
 
+router.get('/alumnos/:dni', (req, res) => {
+	const dni = req.params.dni;
+	res.render('pages/perfil', { title: `Perfil de ${dni} - GymApp` });
+});
+
 module.exports = router;
