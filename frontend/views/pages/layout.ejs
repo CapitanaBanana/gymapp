@@ -10,6 +10,9 @@
 		<link
 			href="/css/output.css"
 			rel="stylesheet" />
+      <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 	</head>
 	<body class="min-h-screen flex flex-col bg-gray-100">
 		<header class="bg-primary text-white">
@@ -25,6 +28,13 @@
 			</div>
 			<nav class="container mx-auto p-4">
 				<ul class="flex justify-around">
+          <li>
+            <button
+              id="config-button"
+              aria-label="Abrir configuraciones">
+               ⚙️
+            </button>
+          </li>
 					<li>
 						<a
 							href="/"
@@ -54,8 +64,41 @@
 						>
 					</li>
 				</ul>
+					<ul
+						 id="config-menu"
+        class="absolute mt-2 w-48 bg-white text-black rounded-lg shadow-lg opacity-0 transform scale-95 transition-all duration-200 hidden z-50">
+        <li>
+            <a
+                href="/configuracion"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">
+                Precio de cuotas
+            </a>
+        </li>
+					</ul>
+				</div>
 			</nav>
 		</header>
+		<script>
+    // Mostrar/ocultar el menú desplegable al hacer clic en el botón de configuración
+    const configButton = document.getElementById('config-button');
+    const configMenu = document.getElementById('config-menu');
+
+    configButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // Evita que el evento se propague al documento
+        configMenu.classList.toggle('hidden');
+        configMenu.classList.toggle('opacity-0');
+        configMenu.classList.toggle('scale-95');
+    });
+
+    // Cerrar el menú si se hace clic fuera de él
+    document.addEventListener('click', (event) => {
+        if (!configMenu.classList.contains('hidden')) {
+            configMenu.classList.add('hidden');
+            configMenu.classList.add('opacity-0');
+            configMenu.classList.add('scale-95');
+        }
+    });
+</script>
 
 		<main class="container mx-auto p-6 flex-grow">
 			<%- body %>

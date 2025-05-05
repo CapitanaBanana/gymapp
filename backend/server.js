@@ -6,7 +6,7 @@ const path = require('path');
 //los "imports" de las rutas
 const alumnosRoutes = require('./routes/alumnosRoutes');
 const pagesRoutes = require('./routes/mainRoutes');
-
+const configuracionRoutes = require('./routes/configuracionRoutes');
 const app = express();
 const port = 3000;
 
@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, '..', 'frontend', 'public')));
 // Rutas API
 app.use('/api/alumnos', alumnosRoutes);
 app.use('/', pagesRoutes);
+app.use('/api/configuracion', configuracionRoutes);
 
 // Iniciar servidor
 app.listen(port, () => {

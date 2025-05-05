@@ -5,6 +5,7 @@ const {
 	inscribirAlumno,
 	getAlumnosDeudores,
 	registrarAsistencia,
+	agregarDiaExtra,
 } = require('../controllers/alumnosController');
 
 // GET → /api/alumnos
@@ -18,5 +19,8 @@ router.get('/deudores', getAlumnosDeudores);
 
 // POST → /api/alumnos/asistencia
 router.post('/asistencia', registrarAsistencia);
+
+// POST → /api/alumnos/agregar-dia-extra
+router.post('/agregar-dia-extra', agregarDiaExtra);
 
 module.exports = router;

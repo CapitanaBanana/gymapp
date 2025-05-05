@@ -39,3 +39,13 @@ a {
 .table-row:nth-child(even) {
 	@apply bg-gray-50;
 }
+/* Ocultar las flechas de los campos de tipo number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield; /* Para Firefox */
+}

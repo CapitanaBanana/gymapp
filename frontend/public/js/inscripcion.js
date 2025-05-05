@@ -11,10 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			dni: document.getElementById('dni').value.trim(),
 			email: document.getElementById('email').value.trim(),
 			telefono: document.getElementById('telefono').value.trim(),
+			tipo_cuota: document
+				.querySelector('input[name="tipo_cuota"]:checked')
+				?.value.trim(),
 		};
 
 		// Validaciones básicas
-		if (!datos.nombre || !datos.apellido || !datos.dni || !datos.telefono) {
+		if (
+			!datos.nombre ||
+			!datos.apellido ||
+			!datos.dni ||
+			!datos.telefono ||
+			!datos.tipo_cuota
+		) {
 			alert('Por favor, completá todos los campos obligatorios.');
 			return;
 		}

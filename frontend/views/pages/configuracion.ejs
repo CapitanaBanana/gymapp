@@ -1,0 +1,42 @@
+<% layout('layout') %>
+
+<div class="card max-w-4xl mx-auto mt-12">
+	<h2 class="page-title">Configuración de Precios de Cuotas</h2>
+	<div class="flex justify-end mb-4">
+		<!-- Botón verde con ícono de más -->
+		<button
+			id="agregar-dia-extra"
+			class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+			<span class="material-symbols-outlined text-lg">add</span>
+
+			<span>Agregar Día Extra</span>
+		</button>
+	</div>
+	<form
+		id="form-precios"
+		class="space-y-4">
+		<table class="w-full border border-gray-200 rounded-xl overflow-hidden">
+			<thead class="table-header">
+				<tr>
+					<th class="table-cell">Tipo de Cuota</th>
+					<th class="table-cell">Precio Actual</th>
+					<th class="table-cell">Nuevo Precio</th>
+				</tr>
+			</thead>
+			<tbody
+				id="tabla-precios"
+				class="text-center text-gray-700">
+				<!-- Filas generadas dinámicamente -->
+			</tbody>
+		</table>
+		<button
+			type="submit"
+			class="btn w-full mt-4">
+			Guardar Cambios
+		</button>
+	</form>
+</div>
+
+<script
+	type="module"
+	src="/js/configuracion.js"></script>

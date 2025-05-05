@@ -6,7 +6,8 @@ const resetDatabase = async () => {
 			DROP TABLE IF EXISTS asistencias;
 			DROP TABLE IF EXISTS cuotas;
 			DROP TABLE IF EXISTS alumnos;
-	
+      DROP TABLE IF EXISTS precio_cuota;
+
 			CREATE TABLE alumnos (
 				id SERIAL PRIMARY KEY,
 				nombre VARCHAR(100) NOT NULL,
@@ -33,8 +34,20 @@ const resetDatabase = async () => {
 					fecha_pago DATE,
 					tipo_cuota VARCHAR(10) NOT NULL
 				);
+        CREATE TABLE precio_cuota (
+          id SERIAL PRIMARY KEY,
+          nombre VARCHAR(50) NOT NULL,
+          monto DECIMAL(10, 2) NOT NULL
+          );
 
-        
+      -- Insertar precios de cuota de prueba
+      INSERT INTO precio_cuota (nombre, monto) 
+      VALUES
+        ('dos', 5000.00),
+        ('tres', 7000.00),
+        ('libre', 9000.00);
+      
+
 			-- Datos de prueba
 			INSERT INTO alumnos (nombre, apellido, dni, email, telefono, adeuda)
 			VALUES 
