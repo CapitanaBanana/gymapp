@@ -12,10 +12,11 @@ module.exports = {
 				primary: '#1D4ED8 ',
 				secondary: '#9333EA',
 				danger: '#EF4444',
-				warning: '#FBBF24',
+				warning: '#FAE4ABFF',
 				success: '#10B981',
 				neutral: '#F3F4F6',
 				primarydark: '#1E3A8A',
+				hovercolor: '##808488FF',
 			},
 			fontFamily: {
 				sans: ['"Open Sans"', 'sans-serif'],

@@ -28,6 +28,7 @@ Thumbs.db       # Windows
 # Compilados de Tailwind (si estás usando build personalizado)
 frontend/public/css/output.css
 
+
 # Coverage de tests
 coverage/
 
@@ -39,3 +40,4 @@ build/
 *.sql
 *.sqlite
 *.db
+frontend/public/css/output.css

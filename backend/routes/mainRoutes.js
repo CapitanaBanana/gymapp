@@ -1,6 +1,4 @@
 const express = require('express');
-const path = require('path');
-const { route } = require('./alumnosRoutes');
 const router = express.Router();
 
 // Ruta para index
@@ -26,6 +24,11 @@ router.get('/deudores', (req, res) => {
 // Ruta para configuración
 router.get('/configuracion', (req, res) => {
 	res.render('pages/configuracion', { title: 'Configuración - GymApp' });
+});
+
+router.get('/alumnos/:dni', (req, res) => {
+	const dni = req.params.dni;
+	res.render('pages/perfil', { title: `Perfil de ${dni} - GymApp` });
 });
 
 module.exports = router;

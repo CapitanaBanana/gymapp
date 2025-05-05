@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-	// Verificar si hay un mensaje en el localStorage
-	const mensaje = localStorage.getItem('mensaje');
 	const dni = localStorage.getItem('dni');
 
 	try {
@@ -12,9 +10,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		alumnos.forEach((alumno) => {
 			const fila = document.createElement('tr');
+			fila.className =
+				'bg-white border-b transition duration-300 ease-in-out cursor-pointer hover:bg-gray-200';
 			if (alumno.dni === dni) {
-				fila.classList.add('bg-alert');
-				setTimeout(() => fila.classList.remove('bg-a'), 1500);
+				fila.classList.add('bg-warning');
+				setTimeout(() => fila.classList.remove('bg-warning'), 1500);
 				localStorage.removeItem('dni');
 			}
 
@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
 
 			tabla.appendChild(fila);
+			fila.addEventListener('click', () => {
+				window.location.href = `/alumnos/${alumno.dni}`;
+			});
 		});
 	} catch (error) {
 		console.error('Error al cargar alumnos:', error);
@@ -35,5 +38,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 const formatearFecha = (fechaStr) => {
 	if (!fechaStr) return '-';
 	const fecha = new Date(fechaStr);
-	return fecha.toLocaleDateString('es-AR'); // o es-ES
+	return fecha.toLocaleDateString('es-AR');
 };

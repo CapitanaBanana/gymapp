@@ -83,9 +83,11 @@ const inscribirAlumno = async (req, res) => {
 		res.status(500).json({ mensaje: 'Error al guardar en la base de datos' });
 	}
 };
-const actualizarAdeudores = async () => {
-	// Actualizar alumnos con más de 30 días de diferencia entre fecha_pago y la fecha actual
-	await pool.query(`
+
+const actualizarAdeudores = async (req, res) => {
+	try {
+		// Actualizar alumnos con más de 30 días de diferencia entre fecha_pago y la fecha actual
+		await pool.query(`
         UPDATE alumnos
         SET adeuda = true
         WHERE adeuda = false AND id IN (
@@ -94,7 +96,12 @@ const actualizarAdeudores = async () => {
             WHERE fecha_pago < CURRENT_DATE - INTERVAL '30 days'
         )
     `);
+	} catch (err) {
+		console.error(err);
+		res.status(500).send('Error al actualizar alumnos deudores');
+	}
 };
+
 const getAlumnosDeudores = async (req, res) => {
 	try {
 		await actualizarAdeudores(); // Actualizar los alumnos que tienen deudas
@@ -110,7 +117,23 @@ const getAlumnosDeudores = async (req, res) => {
 		res.status(500).send('Error al obtener alumnos adeudadores');
 	}
 };
+const getAlumnoByDNI = async (req, res) => {
+	const dni = req.params.dni;
+	try {
+		const result = await pool.query('SELECT * FROM alumnos WHERE dni = $1', [
+			dni,
+		]);
+		const alumno = result.rows[0];
 
+		if (!alumno) {
+			return res.status(404).json({ mensaje: 'Alumno no encontrado' });
+		}
+		res.json(alumno);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ mensaje: 'Error al obtener el alumno por DNI' });
+	}
+};
 const agregarDiaExtra = async (req, res) => {
 	try {
 		//Actualizar la fecha de pago de la última cuota de cada alumno
@@ -136,6 +159,7 @@ module.exports = {
 	getAlumnos,
 	inscribirAlumno,
 	getAlumnosDeudores,
+	getAlumnoByDNI,
 	registrarAsistencia,
 	agregarDiaExtra,
 };

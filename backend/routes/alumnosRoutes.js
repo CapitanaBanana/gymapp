@@ -6,6 +6,7 @@ const {
 	getAlumnosDeudores,
 	registrarAsistencia,
 	agregarDiaExtra,
+	getAlumnoByDNI,
 } = require('../controllers/alumnosController');
 
 // GET → /api/alumnos
@@ -22,5 +23,7 @@ router.post('/asistencia', registrarAsistencia);
 
 // POST → /api/alumnos/agregar-dia-extra
 router.post('/agregar-dia-extra', agregarDiaExtra);
+// GET → /api/alumnos/:dni
+router.get('/:dni', getAlumnoByDNI);
 
 module.exports = router;
