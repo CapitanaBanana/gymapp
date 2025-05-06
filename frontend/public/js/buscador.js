@@ -51,5 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			localStorage.setItem('mensaje', 'Error al registrar asistencia');
 			localStorage.setItem('mensaje_tipo', 'error');
 		}
+		window.location.href = '/';
 	};
 });
