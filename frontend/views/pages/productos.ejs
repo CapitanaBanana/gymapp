@@ -1,0 +1,31 @@
+<% layout('layout') %>
+
+<div class="card max-w-4xl mx-auto mt-12">
+    <h2 class="page-title">Listado de Productos</h2>
+    <div class="flex justify-end mb-4">
+        <!-- Botón para agregar productos -->
+        <button
+            id="agregar-producto"
+            class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+            <span class="material-symbols-outlined text-lg">add</span>
+            <span>Agregar Producto</span>
+        </button>
+    </div>
+    <form id="form-productos" class="space-y-4">
+        <table class="w-full border border-gray-200 rounded-xl overflow-hidden">
+            <thead class="table-header">
+                <tr>
+                    <th class="table-cell">Nombre</th>
+                    <th class="table-cell">Precio</th>
+                    <th class="table-cell">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-productos" class="text-center text-gray-700">
+                <!-- Filas generadas dinámicamente -->
+            </tbody>
+        </table>
+        <button type="submit" class="btn w-full mt-4">Guardar Cambios</button>
+    </form>
+</div>
+
+<script defer src="/js/producto.js"></script>

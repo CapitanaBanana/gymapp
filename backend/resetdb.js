@@ -7,6 +7,8 @@ const resetDatabase = async () => {
 			DROP TABLE IF EXISTS cuotas;
 			DROP TABLE IF EXISTS alumnos;
       DROP TABLE IF EXISTS precio_cuota;
+      DROP TABLE IF EXISTS productos;
+      DROP TABLE IF EXISTS ventas;
 
 			CREATE TABLE alumnos (
 				id SERIAL PRIMARY KEY,
@@ -27,18 +29,31 @@ const resetDatabase = async () => {
 				hora TIME NOT NULL DEFAULT CURRENT_TIME
 			);
 
-        CREATE TABLE cuotas (
-					id SERIAL PRIMARY KEY,
-					alumno_id INTEGER REFERENCES alumnos(id) ON DELETE CASCADE,
-					monto DECIMAL(10, 2) NOT NULL,
-					fecha_pago DATE,
-					tipo_cuota VARCHAR(10) NOT NULL
-				);
-        CREATE TABLE precio_cuota (
-          id SERIAL PRIMARY KEY,
-          nombre VARCHAR(50) NOT NULL,
-          monto DECIMAL(10, 2) NOT NULL
-          );
+      CREATE TABLE cuotas (
+        id SERIAL PRIMARY KEY,
+        alumno_id INTEGER REFERENCES alumnos(id) ON DELETE CASCADE,
+        monto DECIMAL(10, 2) NOT NULL,
+        fecha_pago DATE,
+        tipo_cuota VARCHAR(10) NOT NULL
+      );
+
+      CREATE TABLE precio_cuota (
+        id SERIAL PRIMARY KEY,
+        nombre VARCHAR(50) NOT NULL,
+        monto DECIMAL(10, 2) NOT NULL
+      );
+
+      CREATE TABLE productos (
+        id SERIAL PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        precio DECIMAL(10, 2) NOT NULL
+      );
+      
+      CREATE TABLE ventas (
+        id SERIAL PRIMARY KEY,
+        producto_id INTEGER REFERENCES productos(id) ON DELETE CASCADE,
+        cantidad INTEGER NOT NULL
+      );
 
       -- Insertar precios de cuota de prueba
       INSERT INTO precio_cuota (nombre, monto) 
@@ -67,9 +82,15 @@ const resetDatabase = async () => {
 
         -- Insertar cuotas de prueba
            INSERT INTO cuotas (alumno_id, monto, fecha_pago, tipo_cuota) VALUES
-    (1, 5000.00, '2025-03-05', 'dos'),
-    (2, 7000.00, '2025-04-10', 'tres'),
-    (3, 9000.00, '2025-03-23', 'libre');
+          (1, 5000.00, '2025-03-05', 'dos'),
+          (2, 7000.00, '2025-04-10', 'tres'),
+          (3, 9000.00, '2025-03-23', 'libre');
+
+      -- Insertar productos de prueba
+       INSERT INTO productos (nombre, precio) VALUES
+        ('Producto 1', 100.00),
+        ('Producto 2', 200.00),
+        ('Producto 3', 300.00);
 		`);
 
 		console.log('✅ Base de datos reseteada y datos de prueba insertados.');
