@@ -2,24 +2,37 @@
 
 <div class="max-w-4xl mx-auto card">
 	<h2 class="page-title">Listado de Alumnos</h2>
-	<table class="w-full border border-gray-200 rounded-xl overflow-hidden">
-		<thead class="table-header">
-			<tr class="">
-				<th class="table-cell">Nombre</th>
-				<th class="table-cell">Apellido</th>
-				<th class="table-cell">Teléfono</th>
-				<th class="table-cell">Última asistencia</th>
-				<th class="table-cell">Último pago</th>
-			</tr>
-		</thead>
-		<tbody
-			id="tabla-alumnos"
-			class="text-center text-gray-700">
-			<!-- Se llenará con JS -->
-		</tbody>
-	</table>
-</div>
+	<div class="hidden sm:block overflow-x-auto">
+		<table class="min-w-full border border-gray-200 rounded-xl">
+			<thead class="table-header">
+				<tr>
+					<th class="table-cell text-sm sm:text-base md:text-lg">Nombre</th>
+					<th class="table-cell text-sm sm:text-base md:text-lg">Apellido</th>
+					<th class="table-cell text-sm sm:text-base md:text-lg">Teléfono</th>
+					<th class="table-cell text-sm sm:text-base md:text-lg">
+						Última asistencia
+					</th>
+					<th class="table-cell text-sm sm:text-base md:text-lg">
+						Último pago
+					</th>
+				</tr>
+			</thead>
+			<tbody
+				id="tabla-alumnos"
+				class="text-center text-gray-700 text-sm sm:text-base md:text-lg">
+				<!-- JS inserta filas aquí -->
+			</tbody>
+		</table>
+	</div>
 
-<script
-	type="module"
-	src="/js/alumnos.js"></script>
+	<!-- Mobile cards -->
+	<div
+		id="alumnos-mobile"
+		class="sm:hidden space-y-4 px-2">
+		<!-- JS inserta tarjetas aquí -->
+	</div>
+
+	<script
+		type="module"
+		src="/js/alumnos.js"></script>
+</div>

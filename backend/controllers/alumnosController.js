@@ -120,9 +120,27 @@ const getAlumnosDeudores = async (req, res) => {
 const getAlumnoByDNI = async (req, res) => {
 	const dni = req.params.dni;
 	try {
-		const result = await pool.query('SELECT * FROM alumnos WHERE dni = $1', [
-			dni,
-		]);
+		const result = await pool.query(
+			`
+      SELECT 
+          a.*,
+          -- Última asistencia
+          (SELECT fecha 
+            FROM asistencias 
+            WHERE alumno_id = a.id 
+            ORDER BY fecha DESC, hora DESC 
+            LIMIT 1) AS ultima_asistencia,
+          -- Último pago
+          (SELECT fecha_pago 
+            FROM cuotas 
+            WHERE alumno_id = a.id AND fecha_pago IS NOT NULL
+            ORDER BY fecha_pago DESC 
+            LIMIT 1) AS ultima_fecha_pago
+      FROM alumnos a
+      WHERE a.dni = $1
+            `,
+			[dni]
+		);
 		const alumno = result.rows[0];
 
 		if (!alumno) {

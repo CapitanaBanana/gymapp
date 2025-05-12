@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </td>
                 <td class="table-cell">
                     <button 
+                        type="button"
                         class="btn bg-red-400 text-white px-2 py-1 rounded-lg shadow hover:bg-red-700 transition eliminar-producto"
                         data-id="${producto.id}">
                         ✖
@@ -80,6 +81,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// Manejar clic en el botón "Eliminar Producto"
 	tablaProductos.addEventListener('click', async (e) => {
 		if (e.target.classList.contains('eliminar-producto')) {
+			e.stopPropagation();
+			e.preventDefault();
 			const id = e.target.dataset.id;
 
 			// Confirmar eliminación

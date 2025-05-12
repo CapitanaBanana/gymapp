@@ -54,11 +54,11 @@ const eliminarProducto = async (req, res) => {
 const modificarProductos = async (req, res) => {
 	const cambios = req.body;
 
-	// Validar que los datos sean un array y que cada elemento tenga un id y un monto válido
+	// Validar que los datos sean un array y que cada elemento tenga un id y un precio válido
 	if (
 		!Array.isArray(cambios) ||
 		cambios.some(
-			(cambio) => !cambio.id || isNaN(cambio.monto) || cambio.monto < 0
+			(cambio) => !cambio.id || isNaN(cambio.precio) || cambio.precio < 0
 		)
 	) {
 		return res
@@ -67,17 +67,17 @@ const modificarProductos = async (req, res) => {
 	}
 
 	try {
-		// Actualizar cada cuota en la base de datos
+		// Actualizar cada producto en la base de datos
 		for (const cambio of cambios) {
-			await pool.query('UPDATE precio_cuota SET monto = $1 WHERE id = $2', [
-				cambio.monto,
+			await pool.query('UPDATE productos SET precio = $1 WHERE id = $2', [
+				cambio.precio,
 				cambio.id,
 			]);
 		}
-		res.status(200).json({ mensaje: 'Cuotas modificadas correctamente.' });
+		res.status(200).json({ mensaje: 'Productos modificados correctamente.' });
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ mensaje: 'Error al modificar cuotas.' });
+		res.status(500).json({ mensaje: 'Error al modificar productos.' });
 	}
 };
 

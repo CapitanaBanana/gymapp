@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	try {
 		const res = await fetch(`/api/alumnos/${dni}`);
 		const alumno = await res.json();
-
+		console.log(alumno);
 		document.getElementById(
 			'titulo'
 		).textContent = `Perfil de ${alumno.nombre} ${alumno.apellido}`;
