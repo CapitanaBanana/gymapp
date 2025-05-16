@@ -13,17 +13,39 @@
 				<option value="">Seleccionar producto</option>
 				<!-- JS inserta opciones aquí -->
 			</select>
-			<input
-				type="number"
-				id="cantidad"
-				class="input w-full sm:w-1/4"
-				min="1"
-				placeholder="Cantidad"
-				required />
+			<div class="flex items-center w-full sm:w-1/4">
+				<label
+					for="cantidad-select"
+					class="mr-2"
+					>Cantidad:</label
+				>
+				<select
+					id="cantidad-select"
+					class="input w-20"
+					style="min-width: 4rem">
+					<option
+						value="1"
+						selected>
+						1
+					</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="otro">Otro...</option>
+				</select>
+				<input
+					type="number"
+					id="cantidad-input"
+					class="input w-20 ml-2"
+					min="1"
+					style="display: none"
+					placeholder="Cantidad" />
+			</div>
 			<button
 				type="button"
 				id="agregar-venta"
-				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition sm:ml-4">
 				<span class="material-symbols-outlined text-lg">add</span>
 				<span>Agregar</span>
 			</button>
@@ -35,7 +57,7 @@
 			<tr>
 				<th class="table-cell">Producto</th>
 				<th class="table-cell">Cantidad</th>
-				<th class="table-cell">Acciones</th>
+				<th class="table-cell">Eliminar</th>
 			</tr>
 		</thead>
 		<tbody
@@ -51,65 +73,22 @@
 	</button>
 </div>
 
-<script
-	defer
-	src="/js/ventas.js"></script>
-<% layout('layout') %>
+<hr class="my-8" />
 
-<div class="card max-w-3xl mx-auto mt-12">
-	<h2 class="page-title">Registrar Venta</h2>
-	<form
-		id="form-venta"
-		class="space-y-4">
-		<div class="flex flex-col sm:flex-row gap-4 items-center">
-			<select
-				id="producto-select"
-				class="input w-full sm:w-1/2"
-				required>
-				<option value="">Seleccionar producto</option>
-				<% productos.forEach(producto => { %>
-				<option value="<%= producto.id %>">
-					<%= producto.nombre %> ($<%= producto.precio %>)
-				</option>
-				<% }) %>
-			</select>
-			<input
-				type="number"
-				id="cantidad"
-				class="input w-full sm:w-1/4"
-				min="1"
-				placeholder="Cantidad"
-				required />
-			<button
-				type="button"
-				id="agregar-venta"
-				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
-				<span class="material-symbols-outlined text-lg">add</span>
-				<span>Agregar</span>
-			</button>
-		</div>
-	</form>
-
-	<table class="w-full border border-gray-200 rounded-xl mt-6">
-		<thead class="table-header">
-			<tr>
-				<th class="table-cell">Producto</th>
-				<th class="table-cell">Cantidad</th>
-				<th class="table-cell">Acciones</th>
-			</tr>
-		</thead>
-		<tbody
-			id="tabla-ventas"
-			class="text-center text-gray-700">
-			<!-- JS inserta filas aquí -->
-		</tbody>
-	</table>
-	<button
-		id="confirmar-ventas"
-		class="btn w-full mt-4">
-		Confirmar Ventas
-	</button>
-</div>
+<h2 class="page-title mt-8">Ventas del dia</h2>
+<table class="w-full border border-gray-200 rounded-xl mt-4">
+	<thead class="table-header">
+		<tr>
+			<th class="table-cell">Producto</th>
+			<th class="table-cell">Cantidad</th>
+		</tr>
+	</thead>
+	<tbody
+		id="tabla-historial-ventas"
+		class="text-center text-gray-700">
+		<!-- JS inserta filas aquí -->
+	</tbody>
+</table>
 
 <script
 	defer

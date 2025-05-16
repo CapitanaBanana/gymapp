@@ -18,5 +18,5 @@ router.post('/agregar', agregarProducto);
 
 // DELETE → /api/productos/eliminar/:id
 router.delete('/eliminar/:id', eliminarProducto);
-// OJO QUE AL ELIMIANR UN PRODCUTO TAMBIEN SE LLAMA AL MODIFICAR, NOSE PORQUE, CREARIA UN SUB RUTA CON UN / MAS.
+
 module.exports = router;

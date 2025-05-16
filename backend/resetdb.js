@@ -3,12 +3,12 @@ const pool = require('./db');
 const resetDatabase = async () => {
 	try {
 		await pool.query(`
-			DROP TABLE IF EXISTS asistencias;
-			DROP TABLE IF EXISTS cuotas;
-			DROP TABLE IF EXISTS alumnos;
-      DROP TABLE IF EXISTS precio_cuota;
-      DROP TABLE IF EXISTS productos;
-      DROP TABLE IF EXISTS ventas;
+		  DROP TABLE IF EXISTS ventas CASCADE;
+      DROP TABLE IF EXISTS asistencias CASCADE;
+      DROP TABLE IF EXISTS cuotas CASCADE;
+      DROP TABLE IF EXISTS alumnos CASCADE;
+      DROP TABLE IF EXISTS precio_cuota CASCADE;
+      DROP TABLE IF EXISTS productos CASCADE;
 
 			CREATE TABLE alumnos (
 				id SERIAL PRIMARY KEY,
@@ -52,7 +52,8 @@ const resetDatabase = async () => {
       CREATE TABLE ventas (
         id SERIAL PRIMARY KEY,
         producto_id INTEGER REFERENCES productos(id) ON DELETE CASCADE,
-        cantidad INTEGER NOT NULL
+        cantidad INTEGER NOT NULL,
+        fecha_venta DATE DEFAULT CURRENT_DATE
       );
 
       -- Insertar precios de cuota de prueba
