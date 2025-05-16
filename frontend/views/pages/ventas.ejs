@@ -1,0 +1,116 @@
+<% layout('layout') %>
+
+<div class="card max-w-3xl mx-auto mt-12">
+	<h2 class="page-title">Registrar Venta</h2>
+	<form
+		id="form-venta"
+		class="space-y-4">
+		<div class="flex flex-col sm:flex-row gap-4 items-center">
+			<select
+				id="producto-select"
+				class="input w-full sm:w-1/2"
+				required>
+				<option value="">Seleccionar producto</option>
+				<!-- JS inserta opciones aquí -->
+			</select>
+			<input
+				type="number"
+				id="cantidad"
+				class="input w-full sm:w-1/4"
+				min="1"
+				placeholder="Cantidad"
+				required />
+			<button
+				type="button"
+				id="agregar-venta"
+				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+				<span class="material-symbols-outlined text-lg">add</span>
+				<span>Agregar</span>
+			</button>
+		</div>
+	</form>
+
+	<table class="w-full border border-gray-200 rounded-xl mt-6">
+		<thead class="table-header">
+			<tr>
+				<th class="table-cell">Producto</th>
+				<th class="table-cell">Cantidad</th>
+				<th class="table-cell">Acciones</th>
+			</tr>
+		</thead>
+		<tbody
+			id="tabla-ventas"
+			class="text-center text-gray-700">
+			<!-- JS inserta filas aquí -->
+		</tbody>
+	</table>
+	<button
+		id="confirmar-ventas"
+		class="btn w-full mt-4">
+		Confirmar Ventas
+	</button>
+</div>
+
+<script
+	defer
+	src="/js/ventas.js"></script>
+<% layout('layout') %>
+
+<div class="card max-w-3xl mx-auto mt-12">
+	<h2 class="page-title">Registrar Venta</h2>
+	<form
+		id="form-venta"
+		class="space-y-4">
+		<div class="flex flex-col sm:flex-row gap-4 items-center">
+			<select
+				id="producto-select"
+				class="input w-full sm:w-1/2"
+				required>
+				<option value="">Seleccionar producto</option>
+				<% productos.forEach(producto => { %>
+				<option value="<%= producto.id %>">
+					<%= producto.nombre %> ($<%= producto.precio %>)
+				</option>
+				<% }) %>
+			</select>
+			<input
+				type="number"
+				id="cantidad"
+				class="input w-full sm:w-1/4"
+				min="1"
+				placeholder="Cantidad"
+				required />
+			<button
+				type="button"
+				id="agregar-venta"
+				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+				<span class="material-symbols-outlined text-lg">add</span>
+				<span>Agregar</span>
+			</button>
+		</div>
+	</form>
+
+	<table class="w-full border border-gray-200 rounded-xl mt-6">
+		<thead class="table-header">
+			<tr>
+				<th class="table-cell">Producto</th>
+				<th class="table-cell">Cantidad</th>
+				<th class="table-cell">Acciones</th>
+			</tr>
+		</thead>
+		<tbody
+			id="tabla-ventas"
+			class="text-center text-gray-700">
+			<!-- JS inserta filas aquí -->
+		</tbody>
+	</table>
+	<button
+		id="confirmar-ventas"
+		class="btn w-full mt-4">
+		Confirmar Ventas
+	</button>
+</div>
+
+<script
+	defer
+	src="/js/ventas.js"></script>

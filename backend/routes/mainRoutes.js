@@ -34,4 +34,8 @@ router.get('/alumnos/:dni', (req, res) => {
 router.get('/productos', (req, res) => {
 	res.render('pages/productos', { title: 'Productos - GymApp' });
 });
+router.get('/ventas', (req, res) => {
+	res.render('pages/ventas', { title: 'Ventas - GymApp' });
+});
+
 module.exports = router;
