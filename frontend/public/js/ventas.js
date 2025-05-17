@@ -1,3 +1,4 @@
+import { mostrarToast } from './toast.js';
 document.addEventListener('DOMContentLoaded', async () => {
 	const productoSelect = document.getElementById('producto-select');
 	const cantidadSelect = document.getElementById('cantidad-select');
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		}
 
 		if (!producto_id || isNaN(cantidad) || cantidad < 1) {
-			alert('Selecciona un producto y una cantidad válida.');
+			mostrarToast('Selecciona un producto y una cantidad válida.', 'error');
 			return;
 		}
 
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	// Confirmar ventas (enviar al backend)
 	confirmarVentasBtn.addEventListener('click', async () => {
 		if (ventas.length === 0) {
-			alert('Agrega al menos una venta.');
+			mostrarToast('Agrega al menos una venta.', 'error');
 			return;
 		}
 
@@ -104,10 +105,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 			});
 
 			if (res.ok) {
-				alert('Ventas registradas correctamente.');
+				localStorage.setItem('mensaje', 'Ventas registradas correctamente.');
 				location.reload();
 			} else {
-				alert('Error al registrar las ventas.');
+				mostrarToast('Error al registrar las ventas.', 'error');
 			}
 		} catch (error) {
 			console.error('Error al registrar ventas:', error);

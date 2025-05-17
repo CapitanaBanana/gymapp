@@ -61,7 +61,10 @@ const resetDatabase = async () => {
       VALUES
         ('dos', 5000.00),
         ('tres', 7000.00),
-        ('libre', 9000.00);
+        ('libre', 9000.00),
+        ('dos_efec', 4000.00),
+        ('tres_efec', 6000.00),
+        ('libre_efec', 8000.00);
       
 
 			-- Datos de prueba
