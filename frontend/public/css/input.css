@@ -10,6 +10,15 @@ a {
 	@apply text-primary hover:underline;
 }
 
+/* Etiquetas flotantes */
+.floating-label {
+	@apply absolute text-gray-400 text-sm left-3 top-4 transition-all duration-200 pointer-events-none;
+}
+
+.input:focus ~ .floating-label,
+.input:not(:placeholder-shown) ~ .floating-label {
+	@apply text-primary text-xs top-[-10px] left-2 bg-white px-1;
+}
 /* COMPONENTS */
 .btn {
 	@apply bg-primary text-white font-semibold py-2 px-4 rounded-xl shadow hover:bg-primarydark transition;
@@ -30,14 +39,52 @@ a {
 	@apply text-white hover:text-gray-200;
 }
 /* TABLE STYLES */
+
+.table {
+	@apply min-w-full w-full border border-gray-200 rounded-xl overflow-hidden;
+}
+
+/*El header de la tabla, va en el ejs*/
 .table-header {
-	@apply bg-primary text-white;
+	@apply bg-primary text-white font-semibold;
 }
-.table-cell {
-	@apply p-3 border-b border-gray-200;
+
+/*cuando se crea una fila en el js, agregarle esta clase*/
+.table-row {
+	@apply bg-white border-b transition duration-300 ease-in-out cursor-pointer hover:bg-gray-200;
 }
+
 .table-row:nth-child(even) {
 	@apply bg-gray-50;
+}
+
+.table-row:hover {
+	@apply bg-gray-100;
+}
+
+/*El CONTENIDO, va en los js*/
+.table-cell {
+	@apply p-2 text-center text-gray-700;
+}
+
+/*cada cosa del header tiene que tener esta clase*/
+.table-cell-header {
+	@apply text-sm sm:text-base md:text-lg font-medium p-2;
+}
+
+/*Para hacer que no se vea la tabla en pantallas grandes*/
+.table-wrapper {
+	@apply hidden sm:block overflow-x-auto;
+}
+
+/*para remarcar filas*/
+.highlight {
+	@apply bg-yellow-100;
+}
+
+/* Tarjeta en móvil */
+.mobile-card {
+	@apply bg-white p-4 rounded-xl shadow border text-sm flex flex-col gap-2 transition duration-300 ease-in-out hover:bg-gray-100 hover:shadow-lg cursor-pointer;
 }
 /* Ocultar las flechas de los campos de tipo number */
 input[type='number']::-webkit-inner-spin-button,
@@ -48,4 +95,11 @@ input[type='number']::-webkit-outer-spin-button {
 
 input[type='number'] {
 	-moz-appearance: textfield; /* Para Firefox */
+}
+/* Asterisco en campos obligatorios */
+input[required] ~ .floating-label::after,
+label[required]::after {
+	content: ' *';
+	color: #e53e3e; /* Rojo */
+	margin-left: 0.25rem;
 }

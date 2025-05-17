@@ -2,20 +2,23 @@
 
 <div class="card max-w-4xl mx-auto">
 	<h2 class="page-title mb-4">Listado de Alumnos Deudores</h2>
-	<table class="w-full border border-gray-200 rounded-xl overflow-hidden">
-		<thead class="table-header">
-			<tr>
-				<th class="table-cell">Nombre</th>
-				<th class="table-cell">Apellido</th>
-				<th class="table-cell">Teléfono</th>
-			</tr>
-		</thead>
-		<tbody
-			id="tabla-alumnos"
-			class="text-center text-gray-700">
-			<!-- filas generadas dinámicamente -->
-		</tbody>
-	</table>
+	<div class="table-wrapper">
+		<table class="table">
+			<thead class="table-header">
+				<tr>
+					<th class="table-cell-header">Nombre</th>
+					<th class="table-cell-header">Apellido</th>
+					<th class="table-cell-header">Teléfono</th>
+				</tr>
+			</thead>
+			<tbody id="tabla-alumnos">
+				<!-- filas generadas dinámicamente -->
+			</tbody>
+		</table>
+	</div>
+	<div
+		id="alumnos-mobile"
+		class="sm:hidden space-y-4 px-2"></div>
 </div>
 
 <script

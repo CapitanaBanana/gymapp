@@ -9,23 +9,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const contenedorMobile = document.getElementById('alumnos-mobile');
 
 		alumnos.forEach((alumno) => {
-			// Tabla (pantalla grande)
+			// Fila de la tabla (pantalla grande)
 			const fila = document.createElement('tr');
-			fila.className =
-				'bg-white border-b transition duration-300 ease-in-out cursor-pointer hover:bg-gray-200';
+			fila.className = 'table-row';
 
 			if (alumno.dni === dni) {
-				fila.classList.add('bg-yellow-100');
-				setTimeout(() => fila.classList.remove('bg-yellow-100'), 1500);
+				fila.classList.add('highlight');
+				setTimeout(() => fila.classList.remove('highlight'), 1500);
 				localStorage.removeItem('dni');
 			}
 
 			fila.innerHTML = `
-        <td class="p-2">${alumno.nombre}</td>
-        <td class="p-2">${alumno.apellido}</td>
-        <td class="p-2">${alumno.telefono}</td>
-        <td class="p-2">${formatearFecha(alumno.ultima_asistencia)}</td>
-        <td class="p-2">${formatearFecha(alumno.ultima_fecha_pago)}</td>
+        <td class="table-cell">${alumno.nombre}</td>
+        <td class="table-cell">${alumno.apellido}</td>
+        <td class="table-cell">${alumno.telefono}</td>
+        <td class="table-cell">${formatearFecha(alumno.ultima_asistencia)}</td>
+        <td class="table-cell">${formatearFecha(alumno.ultima_fecha_pago)}</td>
       `;
 
 			fila.addEventListener('click', () => {
@@ -33,13 +32,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 			});
 			tabla.appendChild(fila);
 
-			// Tarjeta (pantalla chica)
+			// Tarjeta para dispositivos móviles
 			const card = document.createElement('div');
-			card.className =
-				'bg-white p-4 rounded-xl shadow border text-sm flex flex-col gap-2 transition duration-300 ease-in-out hover:bg-gray-100 hover:shadow-lg cursor-pointer';
+			card.className = 'mobile-card';
 			card.innerHTML = `
-        <div><strong>${alumno.nombre} ${alumno.apellido}</strong> </div>
-      
+        <div><strong>${alumno.nombre} ${alumno.apellido}</strong></div>
+        <div><strong>Teléfono:</strong> ${alumno.telefono}</div>
         <div><strong>Últ. asistencia:</strong> ${formatearFecha(
 					alumno.ultima_asistencia
 				)}</div>
