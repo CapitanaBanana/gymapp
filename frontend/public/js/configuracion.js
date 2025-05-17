@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 			});
 			if (res.ok) {
 				localStorage.setItem('mensaje', 'Agregacion de dia exitoso.');
+				localStorage.setItem('mensaje_tipo', 'success');
 				window.location.href = '/alumnos';
 			} else {
 				mostrarToast('Hubo un error al agregar un dia.', 'error');

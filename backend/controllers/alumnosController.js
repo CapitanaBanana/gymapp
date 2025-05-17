@@ -166,7 +166,9 @@ const agregarDiaExtra = async (req, res) => {
         WHERE id IN (SELECT id FROM ultimas_cuotas);
       `);
 		await actualizarAdeudores(); // Actualizar los alumnos que tienen deudas
-		res.status(200);
+		res.status(200).json({
+			mensaje: 'Se ha agregado un día extra a las cuotas de todos los alumnos',
+		});
 	} catch (err) {
 		console.error(err);
 		res.status(500).send('Error al agregar un día extra a las cuotas');

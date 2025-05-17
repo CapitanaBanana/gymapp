@@ -94,7 +94,32 @@
 				</div>
 			</nav>
 		</header>
-		<script>
+		<main class="container mx-auto p-6 flex-grow">
+  <%- body %>
+</main>
+
+<!-- Toast container arriba del footer y alineado a la derecha -->
+<div id="toast-container" class="flex justify-end mb-4 space-y-2 z-50"></div>
+
+
+<footer class="bg-primary text-white text-center p-4">
+  <p>&copy; 2025 GymApp. Todos los derechos reservados.</p>
+</footer>
+
+
+      
+		</footer>
+		<!-- Toast container -->
+		
+
+		<!-- Cargar script de Toast -->
+		<script
+			type="module"
+			src="/js/toast.js"></script>
+		<script
+			type="module"
+			src="/js/buscador.js"></script>
+      <script>
     // Mostrar/ocultar el menú desplegable al hacer clic en el botón de configuración
     const configButton = document.getElementById('config-button');
     const configMenu = document.getElementById('config-menu');
@@ -115,26 +140,5 @@
         }
     });
 </script>
-
-		<main class="container mx-auto p-6 flex-grow">
-			<%- body %>
-			<!-- Aquí se inserta el contenido específico de cada página -->
-		</main>
-
-		<footer class="bg-primary text-white text-center p-4">
-			<p>&copy; 2025 GymApp. Todos los derechos reservados.</p>
-		</footer>
-		<!-- Toast container -->
-		<div
-			id="toast-container"
-			class="fixed top-5 right-5 z-50 space-y-2"></div>
-
-		<!-- Cargar script de Toast -->
-		<script
-			type="module"
-			src="/js/toast.js"></script>
-		<script
-			type="module"
-			src="/js/buscador.js"></script>
 	</body>
 </html>
