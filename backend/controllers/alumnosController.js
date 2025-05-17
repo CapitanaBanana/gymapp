@@ -120,9 +120,27 @@ const getAlumnosDeudores = async (req, res) => {
 const getAlumnoByDNI = async (req, res) => {
 	const dni = req.params.dni;
 	try {
-		const result = await pool.query('SELECT * FROM alumnos WHERE dni = $1', [
-			dni,
-		]);
+		const result = await pool.query(
+			`
+      SELECT 
+          a.*,
+          -- Última asistencia
+          (SELECT fecha 
+            FROM asistencias 
+            WHERE alumno_id = a.id 
+            ORDER BY fecha DESC, hora DESC 
+            LIMIT 1) AS ultima_asistencia,
+          -- Último pago
+          (SELECT fecha_pago 
+            FROM cuotas 
+            WHERE alumno_id = a.id AND fecha_pago IS NOT NULL
+            ORDER BY fecha_pago DESC 
+            LIMIT 1) AS ultima_fecha_pago
+      FROM alumnos a
+      WHERE a.dni = $1
+            `,
+			[dni]
+		);
 		const alumno = result.rows[0];
 
 		if (!alumno) {
@@ -156,6 +174,25 @@ const agregarDiaExtra = async (req, res) => {
 		res.status(500).send('Error al agregar un día extra a las cuotas');
 	}
 };
+const getAlumnosQueAsistieronHoy = async (req, res) => {
+	try {
+		const result = await pool.query(`
+			SELECT a.nombre, a.apellido, asis.fecha
+			FROM asistencias asis
+			JOIN alumnos a ON a.id = asis.alumno_id
+			WHERE DATE(asis.fecha) = CURRENT_DATE
+			ORDER BY asis.fecha DESC
+		`);
+		// Devolver un array vacío si no hay resultados
+		if (result.rows.length === 0) {
+			return res.status(200).json([]);
+		}
+		res.json(result.rows);
+	} catch (err) {
+		console.error(err);
+		res.status(500).send('Error al obtener las asistencias de hoy');
+	}
+};
 
 module.exports = {
 	getAlumnos,
@@ -164,4 +201,5 @@ module.exports = {
 	getAlumnoByDNI,
 	registrarAsistencia,
 	agregarDiaExtra,
+	getAlumnosQueAsistieronHoy,
 };

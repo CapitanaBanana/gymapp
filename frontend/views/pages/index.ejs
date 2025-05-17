@@ -1,8 +1,23 @@
 <% layout('layout') %>
 
-<main class="container mx-auto p-6">
-	<h1 class="text-3xl font-bold mb-4">Bienvenido a GymApp</h1>
-	<p class="text-lg">
-		Administra tu gimnasio de manera eficiente con nuestras herramientas.
-	</p>
-</main>
+<div class="max-w-4xl mx-auto card">
+	<h2 class="page-title">Asistencias de Hoy</h2>
+	<table class="w-full border border-gray-200 rounded-xl overflow-hidden">
+		<thead class="table-header">
+			<tr>
+				<th class="table-cell">Nombre</th>
+				<th class="table-cell">Apellido</th>
+				<th class="table-cell">Fecha</th>
+			</tr>
+		</thead>
+		<tbody
+			id="tabla-asistencias"
+			class="text-center text-gray-700">
+			<!-- Se llenará con JS -->
+		</tbody>
+	</table>
+</div>
+
+<script
+	type="module"
+	src="/js/index.js"></script>
