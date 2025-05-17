@@ -61,10 +61,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 			});
 
 			if (res.ok) {
-				alert('Precios actualizados correctamente.');
+				localStorage.setItem('mensaje', 'Precios actualizados correctamente.');
+				localStorage.setItem('mensaje_tipo', 'success');
 				location.reload();
 			} else {
-				alert('Error al actualizar los precios.');
+				localStorage.setItem(
+					'mensaje',
+					'Error al actualizar los precios. Por favor, intenta nuevamente.'
+				);
+				localStorage.setItem('mensaje_tipo', 'error');
+				location.reload();
 			}
 		} catch (error) {
 			console.error('Error al enviar los cambios:', error);
@@ -77,11 +83,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 				method: 'POST',
 			});
 			if (res.ok) {
+				console.log('pito.');
 				localStorage.setItem('mensaje', 'Agregacion de dia exitoso.');
+				localStorage.setItem('mensaje_tipo', 'success');
 				window.location.href = '/alumnos';
 			} else {
-				alert('Error al agregar día extra.');
+				console.log('Error al agregar día extra.');
+				localStorage.setItem('mensaje', 'Error al agregar día extra.');
+				localStorage.setItem('mensaje_tipo', 'error');
+				location.reload();
 			}
+			console.log('pito.');
 		} catch (error) {
 			console.error('Error al agregar día extra:', error);
 		}
