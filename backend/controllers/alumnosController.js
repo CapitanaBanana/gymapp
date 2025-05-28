@@ -10,6 +10,7 @@ const getAlumnos = async (req, res) => {
 				a.dni,
 				a.email,
 				a.telefono,
+        a.adeuda,
 				-- Última asistencia
 				(SELECT fecha 
 				 FROM asistencias 

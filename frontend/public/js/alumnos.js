@@ -18,13 +18,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 				setTimeout(() => fila.classList.remove('highlight'), 1500);
 				localStorage.removeItem('dni');
 			}
+			const claseDeuda = alumno.adeuda ? 'text-danger' : '';
 
 			fila.innerHTML = `
         <td class="table-cell">${alumno.nombre}</td>
         <td class="table-cell">${alumno.apellido}</td>
         <td class="table-cell">${alumno.telefono}</td>
         <td class="table-cell">${formatearFecha(alumno.ultima_asistencia)}</td>
-        <td class="table-cell">${formatearFecha(alumno.ultima_fecha_pago)}</td>
+         <td class="table-cell ${claseDeuda}">${formatearFecha(
+				alumno.ultima_fecha_pago
+			)}</td>
       `;
 
 			fila.addEventListener('click', () => {

@@ -81,6 +81,9 @@ a {
 .highlight {
 	@apply bg-yellow-100;
 }
+.text-danger {
+	@apply text-red-500 font-semibold;
+}
 
 /* Tarjeta en móvil */
 .mobile-card {

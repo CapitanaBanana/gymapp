@@ -4,7 +4,9 @@ module.exports = {
 	content: [
 		path.join(__dirname, 'frontend/views/**/*.ejs'),
 		path.join(__dirname, 'frontend/public/**/*.{html,js}'),
+		path.join(__dirname, 'frontend/public/js/*.{html,js}'),
 	],
+	safelist: ['text-red-500', 'text-green-500', 'text-yellow-500'],
 
 	theme: {
 		extend: {

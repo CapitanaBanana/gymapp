@@ -5,15 +5,15 @@
 	<form
 		id="form-venta"
 		class="space-y-4">
-		<div class="flex flex-col sm:flex-row gap-4 items-center">
+		<div class="flex flex-col sm:flex-row gap-4 items-center mb-6">
 			<select
 				id="producto-select"
-				class="input w-full sm:w-1/2"
+				class="input w-full sm:w-1/3"
 				required>
 				<option value="">Seleccionar producto</option>
 				<!-- JS inserta opciones aquí -->
 			</select>
-			<div class="flex items-center w-full sm:w-1/4">
+			<div class="flex items-center w-full sm:w-1/3">
 				<label
 					for="cantidad-select"
 					class="mr-2"
@@ -37,7 +37,7 @@
 				<input
 					type="number"
 					id="cantidad-input"
-					class="input w-20 ml-2"
+					class="input ml-2"
 					min="1"
 					style="display: none"
 					placeholder="Cantidad" />
@@ -45,19 +45,19 @@
 			<button
 				type="button"
 				id="agregar-venta"
-				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition sm:ml-4">
+				class="btn bg-success text-white flex items-center space-x-2 px-4 py-2 rounded-lg shadow hover:bg-green-700 transition sm:ml-4 sm:w-1/4">
 				<span class="material-symbols-outlined text-lg">add</span>
 				<span>Agregar</span>
 			</button>
 		</div>
 	</form>
 
-	<table class="w-full border border-gray-200 rounded-xl mt-6">
+	<table class="table">
 		<thead class="table-header">
 			<tr>
-				<th class="table-cell">Producto</th>
-				<th class="table-cell">Cantidad</th>
-				<th class="table-cell">Eliminar</th>
+				<th class="table-cell-header">Producto</th>
+				<th class="table-cell-header">Cantidad</th>
+				<th class="table-cell-header">Eliminar</th>
 			</tr>
 		</thead>
 		<tbody
@@ -66,29 +66,32 @@
 			<!-- JS inserta filas aquí -->
 		</tbody>
 	</table>
-	<button
-		id="confirmar-ventas"
-		class="btn w-full mt-4">
-		Confirmar Ventas
-	</button>
+	<div class="flex justify-center mt-4">
+		<button
+			id="confirmar-ventas"
+			class="btn">
+			Confirmar Ventas
+		</button>
+	</div>
 </div>
 
 <hr class="my-8" />
-
-<h2 class="page-title mt-8">Ventas del dia</h2>
-<table class="w-full border border-gray-200 rounded-xl mt-4">
-	<thead class="table-header">
-		<tr>
-			<th class="table-cell">Producto</th>
-			<th class="table-cell">Cantidad</th>
-		</tr>
-	</thead>
-	<tbody
-		id="tabla-historial-ventas"
-		class="text-center text-gray-700">
-		<!-- JS inserta filas aquí -->
-	</tbody>
-</table>
+<div class="card max-w-3xl mx-auto mt-12">
+	<h2 class="page-title mt-8">Ventas del dia</h2>
+	<table class="table">
+		<thead class="table-header">
+			<tr>
+				<th class="table-cell-header">Producto</th>
+				<th class="table-cell-header">Cantidad</th>
+			</tr>
+		</thead>
+		<tbody
+			id="tabla-historial-ventas"
+			class="text-center text-gray-700">
+			<!-- JS inserta filas aquí -->
+		</tbody>
+	</table>
+</div>
 
 <script
 	type="module"
