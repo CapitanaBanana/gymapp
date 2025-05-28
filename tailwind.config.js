@@ -9,14 +9,14 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#1D4ED8 ',
+				primary: '#1D4ED8',
 				secondary: '#9333EA',
 				danger: '#EF4444',
-				warning: '#FAE4ABFF',
+				warning: '#FAE4AB',
 				success: '#10B981',
 				neutral: '#F3F4F6',
 				primarydark: '#1E3A8A',
-				hovercolor: '##808488FF',
+				hovercolor: '#808488',
 			},
 			fontFamily: {
 				sans: ['"Open Sans"', 'sans-serif'],

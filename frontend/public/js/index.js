@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <td class="p-2">${asistencia.apellido}</td>
                 <td class="p-2">${formatearFecha(asistencia.fecha)}</td>
             `;
+			fila.addEventListener('click', () => {
+				console.log(asistencia.dni);
+				window.location.href = `/alumnos/${asistencia.dni}`;
+			});
 			tabla.appendChild(fila);
 		});
 	} catch (error) {

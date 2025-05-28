@@ -177,7 +177,7 @@ const agregarDiaExtra = async (req, res) => {
 const getAlumnosQueAsistieronHoy = async (req, res) => {
 	try {
 		const result = await pool.query(`
-			SELECT a.nombre, a.apellido, asis.fecha
+			SELECT a.dni, a.nombre, a.apellido, asis.fecha
 			FROM asistencias asis
 			JOIN alumnos a ON a.id = asis.alumno_id
 			WHERE DATE(asis.fecha) = CURRENT_DATE
